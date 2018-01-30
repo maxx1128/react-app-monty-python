@@ -1,17 +1,11 @@
 @import '_tools/layout';
 @import '_settings/type';
 
-$header-els: 'h1', 'h2', 'h3', 'h4', 'h5', 'h6';
-
 .italic { font-style: italic; }
 
 .lower { text-transform: lowercase; }
 .upper { text-transform: uppercase; }
 .capitalize { text-transform: capitalize; }
-
-@each $header in $header-els {
-  #{$header} { font-family: type(font-family, header); }
-}
 
 @each $label, $font-family in map-get($typography-map, font-family) {
   .font-family-#{$label} { font-family: $font-family; }

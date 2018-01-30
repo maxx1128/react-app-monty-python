@@ -10,20 +10,15 @@
 
 .header {
   composes: padding-base from "../styles/layout.css";
-  height: 150px;
 
   composes: text-center from "../styles/type.css";
 
   composes: bg-contrast-mono-darkest from "../styles/colors.css";
 }
 
-.title {
-  composes: font-family-header h3 from "../styles/type.css";
-}
-
 .intro {
-  composes: flex-item from "../styles/layout.css";
-  composes: font-family-header h5 text-center from "../styles/type.css";
+  composes: flex-item padding-base from "../styles/layout.css";
+  composes: text-center from "../styles/type.css";
 }
 
 @keyframes App-logo-spin {

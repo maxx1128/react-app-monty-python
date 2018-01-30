@@ -9,11 +9,13 @@ class App extends Component {
       <div class={s.wrapper}>
         <header class={s.header}>
           <img src={logo} class={s.logo} alt="logo" />
-          <h1 class={s.title}>Welcome to React</h1>
+          <h1>Welcome to React</h1>
         </header>
-        <p class={s.intro}>
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div class={s.intro}>
+          <p>
+            To get started, edit <code>src/App.js</code> and save to reload.
+          </p>
+        </div>
 
         <Footer />
       </div>

@@ -1,0 +1,29 @@
+@import 'styles/_settings/type';
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0;
+
+  font-family: $g-font-family-base;
+}
+
+// Typography globals
+$header-els: 'h1', 'h2', 'h3', 'h4', 'h5', 'h6';
+
+@each $header in $header-els {
+  #{$header} { font-family: type(font-family, header); }
+}
+
+@each $label, $font-size in map-get($typography-map, font-size) {  
+  #{$label} { font-size: $font-size; }
+}
+
+@each $label, $line-height in map-get($typography-map, line-height) {  
+  #{$label} { line-height: strip-unit($line-height); }
+}
+
+@each $label, $margin in map-get($typography-map, margin) {  
+  #{$label} { margin: $margin; }
+}
