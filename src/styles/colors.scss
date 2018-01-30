@@ -1,0 +1,9 @@
+@import '_settings/colors';
+
+@each $palette, $swatches in $color-map {
+  @each $label, $color in $swatches {
+    .bg-#{$palette}-#{$label} { background-color: $color; }
+    .bg-contrast-#{$palette}-#{$label} { @include contra-color($color); }
+    .color-#{$palette}-#{$label} { color: $color; }
+  }
+}

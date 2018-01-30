@@ -1,0 +1,19 @@
+// All variables related to the grid, including breakpoints
+
+// For pulling specific breakpoint width values out.
+// Not for adding breakpoint styles.
+@function breakpoint($width) {
+  @if map-has-key($breakpoint-map, $width) {
+    @return map-get($breakpoint-map, $width);
+  }
+}
+
+$g-grid-columns: 12;
+
+// Map for the breakpoints and max width
+$breakpoint-map: (
+  xs: 0px,
+  sm: rem(480px),
+  md: rem(800px),
+  max: rem(1200px)
+);

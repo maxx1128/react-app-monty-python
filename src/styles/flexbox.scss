@@ -1,0 +1,63 @@
+@import '_tools/layout';
+
+.flex { display: flex; }
+.inline-flex { display: inline-flex; }
+
+.flex-item { flex: 1 1 auto; }
+.flex-nogrow { flex-grow: 0; }
+
+@each $bp-label, $bp-width in $breakpoint-map {
+  $bp-label-final: '';
+
+  @for $i from 1 through $g-grid-columns {
+    $perc-width: percentage($i/$g-grid-columns);
+
+    @if ($bp-label != 'xs') { $bp-label-final: '-' + $bp-label; }
+
+    @include larger-than($bp-label) {
+      .flex-basis-#{$i}#{$bp-label-final} {
+        flex-basis: $perc-width;
+        max-width: $perc-width;
+      }
+    }
+  }
+}
+
+@each $bp-label, $bp-width in $breakpoint-map {
+  $bp-label-final: '';
+
+  @if ($bp-label != 'xs') { $bp-label-final: '-' + $bp-label; }
+
+  @include larger-than($bp-label) {
+    .flex-wrap#{$bp-label-final} { flex-wrap: wrap; }
+    .flex-nowrap#{$bp-label-final} { flex-wrap: nowrap; }
+    .flex-row#{$bp-label-final} { flex-direction: row; }
+    .flex-row-reverse#{$bp-label-final} { flex-direction: row-reverse; }
+    .flex-column#{$bp-label-final} { flex-direction: column; }
+    .flex-column-reverse#{$bp-label-final} { flex-direction: column-reverse; }
+
+    .flex-align-start#{$bp-label-final} { align-items: flex-start; }
+    .flex-align-center#{$bp-label-final} { align-items: center; }
+    .flex-align-end#{$bp-label-final} { align-items: flex-end; }
+    .flex-align-baseline#{$bp-label-final} { align-items: baseline; }
+    .flex-align-stretch#{$bp-label-final} { align-items: stretch; }
+
+    .flex-align-self-start#{$bp-label-final} { align-self: flex-start; }
+    .flex-align-self-center#{$bp-label-final} { align-self: center; }
+    .flex-align-self-end#{$bp-label-final} { align-self: flex-end; }
+    .flex-align-self-baseline#{$bp-label-final} { align-self: baseline; }
+    .flex-align-self-stretch#{$bp-label-final} { align-self: stretch; }
+
+    .flex-justify-start#{$bp-label-final} { justify-content: flex-start; }
+    .flex-justify-center#{$bp-label-final} { justify-content: center; }
+    .flex-justify-end#{$bp-label-final} { justify-content: flex-end; }
+    .flex-justify-between#{$bp-label-final} { justify-content: space-between; }
+    .flex-justify-around#{$bp-label-final} { justify-content: space-around; }
+
+    .flex-center#{$bp-label-final} {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

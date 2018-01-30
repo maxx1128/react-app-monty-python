@@ -1,0 +1,47 @@
+@import '_tools/layout';
+@import '_settings/type';
+
+$header-els: 'h1', 'h2', 'h3', 'h4', 'h5', 'h6';
+
+.italic { font-style: italic; }
+
+.lower { text-transform: lowercase; }
+.upper { text-transform: uppercase; }
+.capitalize { text-transform: capitalize; }
+
+@each $header in $header-els {
+  #{$header} { font-family: type(font-family, header); }
+}
+
+@each $label, $font-family in map-get($typography-map, font-family) {
+  .font-family-#{$label} { font-family: $font-family; }
+}
+
+@each $label, $weight in map-get($typography-map, font-weight) {
+  .font-weight-#{$label} { font-weight: $weight; }
+}
+
+@each $label, $font-size in map-get($typography-map, font-size) {  
+  .font-size-#{$label} { font-size: $font-size; }
+}
+
+@each $label, $line-height in map-get($typography-map, line-height) {  
+  .line-height-#{$label} { line-height: strip-unit($line-height); }
+}
+
+@each $label, $margin in map-get($typography-map, margin) {  
+  .type-margin-#{$label} { margin: $margin; }
+}
+
+
+@each $bp-label, $bp in $breakpoint-map {
+  $bp-label-final: '';
+
+  @if ($bp-label != 'xs') { $bp-label-final: '-' + $bp-label; }
+
+  @include larger-than(#{$bp-label}) {
+    .text-center#{$bp-label-final} { text-align: center; }
+    .text-right#{$bp-label-final} { text-align: right; }
+    .text-left#{$bp-label-final} { text-align: left; }
+  } 
+}

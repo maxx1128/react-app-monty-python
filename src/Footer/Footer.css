@@ -1,0 +1,6 @@
+.container {
+  composes: font-size-small font-family-mono from "../styles/type.css";
+
+  composes: padding-base padding-y-double-md from "../styles/spacing.css";
+  composes: bg-mono-lighter from "../styles/colors.css";
+}
