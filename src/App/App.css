@@ -1,5 +1,5 @@
 .wrapper {
-  composes: flex flex-column from "../styles/flexbox.css";
+  composes: flex flex-column from "../styles/layout.css";
   min-height: 100vh;
 }
 
@@ -9,7 +9,7 @@
 }
 
 .header {
-  composes: padding-base from "../styles/spacing.css";
+  composes: padding-base from "../styles/layout.css";
   height: 150px;
 
   composes: text-center from "../styles/type.css";
@@ -22,7 +22,7 @@
 }
 
 .intro {
-  composes: flex-item from "../styles/flexbox.css";
+  composes: flex-item from "../styles/layout.css";
   composes: font-family-header h5 text-center from "../styles/type.css";
 }
 

@@ -1,5 +1,67 @@
 @import '_tools/layout';
 
+@each $bp-label, $bp in $breakpoint-map {
+  
+  $bp-label-final: '';
+
+  @if ($bp-label != 'xs') { $bp-label-final: '-' + $bp-label; }
+
+  @include larger-than($bp-label) {
+    @each $label, $length in $spacing-map {
+      // Margin
+      .margin-#{$label}#{$bp-label-final} { margin: $length; }
+      .margin-t-#{$label}#{$bp-label-final} { margin-top: $length; }
+      .margin-r-#{$label}#{$bp-label-final} { margin-right: $length; }
+      .margin-b-#{$label}#{$bp-label-final} { margin-bottom: $length; }
+      .margin-l-#{$label}#{$bp-label-final} { margin-left: $length; }
+      
+      .margin-x-#{$label}#{$bp-label-final} {
+        margin-right: $length;
+        margin-left: $length;
+      }
+      
+      .margin-y-#{$label}#{$bp-label-final} {
+        margin-top: $length;
+        margin-bottom: $length;
+      }
+
+      // Padding
+      .padding-#{$label}#{$bp-label-final} { padding: $length; }
+      .padding-t-#{$label}#{$bp-label-final} { padding-top: $length; }
+      .padding-r-#{$label}#{$bp-label-final} { padding-right: $length; }
+      .padding-b-#{$label}#{$bp-label-final} { padding-bottom: $length; }
+      .padding-l-#{$label}#{$bp-label-final} { padding-left: $length; }
+      
+      .padding-x-#{$label}#{$bp-label-final} {
+        padding-right: $length;
+        padding-left: $length;
+      }
+      
+      .padding-y-#{$label}#{$bp-label-final} {
+        padding-top: $length;
+        padding-bottom: $length;
+      }
+    }
+  }
+
+  // Auto margin classes that only need breakpoint vars
+
+  .margin-x-auto#{$bp-label-final} {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .margin-y-auto#{$bp-label-final} {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .margin-t-auto#{$bp-label-final} { margin-top: auto; }
+  .margin-r-auto#{$bp-label-final} { margin-right: auto; }
+  .margin-b-auto#{$bp-label-final} { margin-bottom: auto; }
+  .margin-l-auto#{$bp-label-final} { margin-left: auto; }
+}
+
 .flex { display: flex; }
 .inline-flex { display: inline-flex; }
 
