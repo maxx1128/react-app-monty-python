@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
-import logo from './../logo.svg';
-import Footer from './../Footer';
 import s from './App.css';
+
+import Header from './../Header';
+import Footer from './../Footer';
+import MontyHallGame from './../MontyHallGame';
 
 class App extends Component {
   render() {
     return (
       <div class={s.wrapper}>
-        <header class={s.header}>
-          <img src={logo} class={s.logo} alt="logo" />
-          <h1>Welcome to React</h1>
-        </header>
+        <Header
+          title="Monty Hall React App"
+        />
+        
         <div class={s.intro}>
-          <p>
-            To get started, edit <code>src/App.js</code> and save to reload.
-          </p>
+          <MontyHallGame />
         </div>
 
         <Footer />

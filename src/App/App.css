@@ -3,25 +3,6 @@
   min-height: 100vh;
 }
 
-.logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.header {
-  composes: padding-base from "../styles/layout.css";
-
-  composes: text-center from "../styles/type.css";
-
-  composes: bg-contrast-mono-darkest from "../styles/colors.css";
-}
-
 .intro {
   composes: flex-item padding-base from "../styles/layout.css";
-  composes: text-center from "../styles/type.css";
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }
