@@ -1,0 +1,31 @@
+@import './layout';
+@import './colors';
+
+// Function for getting container-specific styles
+@function container($style, $type: 'base') {
+  @if map-has-key($containers-map, $style) {
+    @return map-get(map-get($containers-map, $style), $type);
+  }
+}
+
+$g-box-shadow-shade-1: rgba(color(mono, darkest), 0.1);
+$g-box-shadow-shade-2: rgba(color(mono, darkest), 0.14);
+$g-box-shadow-shade-3: rgba(color(mono, darkest), 0.18);
+$g-box-shadow-shade-4: rgba(color(mono, darkest), 0.22);
+$g-box-shadow-shade-5: rgba(color(mono, darkest), 0.26);
+
+$containers-map: (
+  border-radius: (
+    small: spacing(quart),
+    base: spacing(half),
+    large: spacing()
+  ),
+
+  box-shadow: (
+    1: (0 0 spacing(quart) $g-box-shadow-shade-1, 0 0 spacing(quart) $g-box-shadow-shade-4),
+    2: (0 spacing(quart) spacing(half) $g-box-shadow-shade-2, 0 0 spacing(half) $g-box-shadow-shade-4),
+    3: (0 spacing(half) spacing(oneHalf) $g-box-shadow-shade-3, 0 0 spacing(oneHalf) $g-box-shadow-shade-4),
+    4: (0 spacing() spacing(double) $g-box-shadow-shade-4, 0 spacing(quart) spacing(double) $g-box-shadow-shade-4),
+    5: (0 spacing() spacing(triple) $g-box-shadow-shade-5, 0 spacing(half) spacing(triple) $g-box-shadow-shade-4)
+  )
+);

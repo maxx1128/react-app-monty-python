@@ -1,0 +1,18 @@
+.common {
+  display: inline-block;
+  composes: padding-y-half padding-x-base margin-half from '../styles/layout.css';
+  text-decoration: none;
+  border-radius: 0.5rem;
+  composes: bg-contrast-primary-darker from '../styles/colors.css';
+  transition: box-shadow 0.5s; }
+  .common:hover, .common:focus, .common:active {
+    box-shadow: 0 0.25rem 0.5rem rgba(17, 17, 17, 0.14), 0 0 0.5rem rgba(17, 17, 17, 0.22);
+    transition: box-shadow 0.5s; }
+
+.default {
+  composes: common;
+  composes: bg-contrast-primary-dark from '../styles/colors.css'; }
+
+.secondary {
+  composes: common;
+  composes: bg-contrast-secondary-dark from '../styles/colors.css'; }

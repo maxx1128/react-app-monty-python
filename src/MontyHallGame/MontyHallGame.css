@@ -1,0 +1,7 @@
+.buttons {
+  composes: margin-b-oneHalf flex flex-align-center flex-justify-center flex-column flex-row-sm from '../styles/layout.css';
+}
+
+.text {
+  composes: text-center from '../styles/type.css';
+}

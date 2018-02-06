@@ -1,0 +1,10 @@
+.wrapper {}
+
+.door {
+  width: 100%;
+  height: 25vh;
+
+  background-image: url("https://3.bp.blogspot.com/-VwUqIP3L5zA/TWY1S8hzgHI/AAAAAAAABIE/jSXUbqykwGg/s1600/TOP-STORY-3-GOAT.jpg");
+  background-size: cover;
+  background-position: center;
+}

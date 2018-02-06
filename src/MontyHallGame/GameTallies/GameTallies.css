@@ -1,0 +1,14 @@
+.wrapper {}
+
+.title {
+  composes: text-center from "../../styles/type.css";
+}
+
+.tally_wrapper {
+  composes: flex flex-column flex-row-sm from "../../styles/layout.css";
+}
+
+.tally {
+  composes: padding-y-half padding-x-base from "../../styles/layout.css";
+  composes: flex-item from "../../styles/layout.css";
+}

@@ -1,0 +1,29 @@
+@import '../styles/_settings/all-settings';
+
+.common {
+  display: inline-block;
+  composes: padding-y-half padding-x-base margin-half from '../styles/layout.css';
+
+  text-decoration: none;
+
+  border-radius: spacing(half);
+  composes: bg-contrast-primary-darker from '../styles/colors.css';
+
+  transition: box-shadow 0.5s;
+
+  @include hovers() {
+    box-shadow: container(box-shadow, 2);
+
+    transition: box-shadow 0.5s;
+  }
+}
+
+.default {
+  composes: common;
+  composes: bg-contrast-primary-dark from '../styles/colors.css';
+}
+
+.secondary {
+  composes: common;
+  composes: bg-contrast-secondary-dark from '../styles/colors.css'; 
+}

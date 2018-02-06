@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import s from './DoorGroup.css';
 
 import Door from './../Door';
 
@@ -6,14 +7,10 @@ class DoorGroup extends Component {
 
   render() {
     return (
-      <div>
-        <p>
-          Door Group!
-        </p>
-
-        <Door />
-        <Door />
-        <Door />
+      <div class={s.wrapper}>
+        <Door classes={s.door} />
+        <Door classes={s.door} />
+        <Door classes={s.door} />
       </div>
     )
   }
