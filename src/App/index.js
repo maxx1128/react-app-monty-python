@@ -8,12 +8,12 @@ import MontyHallGame from './../MontyHallGame';
 class App extends Component {
   render() {
     return (
-      <div class={s.wrapper}>
+      <div className={s.wrapper}>
         <Header
           title="Monty Hall React App"
         />
         
-        <div class={s.intro}>
+        <div className={s.intro}>
           <MontyHallGame />
         </div>
 

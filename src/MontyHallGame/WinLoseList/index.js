@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import s from './WinLoseList.css';
 
 class WinLoseList extends Component {
   constructor(props) {
@@ -8,18 +9,18 @@ class WinLoseList extends Component {
 
   render() {
     return (
-      <div className={this.props.classes}>
+      <div className={s.list}>
         <p>
-          List of different wins and losses
+          Results when you {this.props.label}
         </p>
 
         <ul>
           <li>
-            X Wins
+            {this.props.data.wins} Wins
           </li>
 
           <li>
-            X Losses
+            {this.props.data.losses} Losses
           </li>
         </ul>
       </div>

@@ -1,8 +1,0 @@
-.wrapper {
-  composes: margin-b-oneHalf flex flex-column flex-row-sm from "../../styles/layout.css";
-}
-
-.door {
-  composes: padding-half from "../../styles/layout.css";
-  composes: flex-item from "../../styles/layout.css";
-}

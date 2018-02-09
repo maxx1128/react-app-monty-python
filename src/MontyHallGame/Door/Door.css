@@ -1,4 +1,7 @@
-.wrapper {}
+.wrapper {
+  composes: padding-half from "../../styles/layout.css";
+  composes: flex-item from "../../styles/layout.css";
+}
 
 .door {
   width: 100%;

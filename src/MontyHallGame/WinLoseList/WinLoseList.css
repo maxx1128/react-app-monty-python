@@ -1,0 +1,4 @@
+.list {
+  composes: padding-y-half padding-x-base from "../../styles/layout.css";
+  composes: flex-item from "../../styles/layout.css";
+}

@@ -5,8 +5,8 @@ import s from './Header.css';
 class Header extends Component {
   render() {
     return (
-      <header class={s.container}>
-        <img src={logo} class={s.logo} alt="logo" />
+      <header className={s.container}>
+        <img src={logo} className={s.logo} alt="logo" />
         <h1>
           {this.props.title}
         </h1>

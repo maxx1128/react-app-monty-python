@@ -20,7 +20,7 @@ class Footer extends Component {
     }
 
     return (
-      <a class={styleClass} href={link}>
+      <a className={styleClass} href={link}>
         {text}
       </a>
     )
