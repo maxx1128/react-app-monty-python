@@ -1,0 +1,3 @@
+.wrapper {
+  composes: margin-b-oneHalf flex flex-column flex-row-sm from "../../styles/layout.css";
+}

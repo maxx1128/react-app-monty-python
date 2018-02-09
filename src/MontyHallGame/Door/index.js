@@ -9,27 +9,25 @@ class Door extends Component {
       }
   }
 
-  winning_door = () => {
-    return (this.props.number === this.props.winning_door) ? true : false;
-  }
-
-  selected_door = () => {
-    return (this.props.number === this.props.selected_door) ? true : false;
-  }
-
-  opened_door = () => {
-    return ( (this.props.turn === 2) || (this.props.turn === 1 && this.selected_door()) ) ? true : false;
-  }
-
   render() {
 
-    const text = this.winning_door() ? 'Winner' : 'Loser';
+    const winner   = this.props.winning ? 'Winner' : 'Loser',
+          selected = this.props.selected ? 'Selected' : '',
+          opened   = this.props.opened ? 'Opened' : '';
 
     return (
-      <div className={s.wrapper} onClick={() => this.props.onClick(this.props.winner)}>
+      <div className={s.wrapper} onClick={() => this.props.onClick(this.props.number)}>
         <div className={s.door}>
           <p>
-            {text}
+            {winner}
+          </p>
+
+          <p>
+            {selected}
+          </p>
+
+          <p>
+            {opened}
           </p>
         </div>
       </div>

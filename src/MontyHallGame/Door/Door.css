@@ -6,6 +6,9 @@
 .door {
   width: 100%;
   height: 25vh;
+  composes: padding-half from "../../styles/layout.css";
+
+  composes: color-mono-lightest from "../../styles/colors.css";
 
   background-image: url("https://3.bp.blogspot.com/-VwUqIP3L5zA/TWY1S8hzgHI/AAAAAAAABIE/jSXUbqykwGg/s1600/TOP-STORY-3-GOAT.jpg");
   background-size: cover;

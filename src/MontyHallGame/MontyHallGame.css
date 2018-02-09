@@ -6,10 +6,6 @@
   composes: text-center from '../styles/type.css';
 }
 
-.doors {
-  composes: margin-b-oneHalf flex flex-column flex-row-sm from "../styles/layout.css";
-}
-
 .tallies {
   composes: flex flex-column flex-row-sm from "../styles/layout.css";
 }
