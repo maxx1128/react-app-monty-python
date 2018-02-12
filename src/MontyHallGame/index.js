@@ -15,13 +15,15 @@ class MontyHallGame extends Component {
       switch_door: null,
       winning_door: Math.floor(Math.random() * 3),
       action: null,
-      results_stayed: {
-        wins: 0,
-        losses: 0
-      },
-      results_switched: {
-        wins: 0,
-        losses: 0
+      results: {
+        stayed: {
+          wins: 0,
+          losses: 0
+        },
+        switched: {
+          wins: 0,
+          losses: 0
+        }
       }
     }
   }
@@ -58,7 +60,7 @@ class MontyHallGame extends Component {
 
   select_door = (i) => {
     if (this.state.turn === 0) {
-      const door_roles = this.get_door_roles(i),
+      const door_roles  = this.get_door_roles(i),
             opened_door = door_roles.opened,
             switch_door = door_roles.switch;
 
@@ -71,17 +73,29 @@ class MontyHallGame extends Component {
     }
   }
 
+  update_results = (result) => {
+    result++;
+    this.setState({results: {stayed: {wins: result}}});
+  }
+
   stay_or_switch = (action) => {
     if (this.state.turn === 1) {
-      const will_switch = (action === "switch") ? true : false;
+      let   results    = this.state.results;
+      const did_switch = (action === "switch") ? true : false,
+            final_door = (did_switch) ? this.state.switch_door : this.state.selected_door,
+            did_win    = (this.state.winning_door === final_door);
 
-      if (will_switch) {
-        this.setState({
-          selected_door: this.state.switch_door
-        });
+      if (did_switch) {
+        (did_win) ? results.switched.wins++ : results.switched.losses++
+      } else {
+        (did_win) ? results.stayed.wins++ : results.stayed.losses++
       }
 
-      this.setState({turn: 2});
+      this.setState({
+        selected_door: final_door,
+        turn: 2,
+        results: results
+      });
     }
   }
 
@@ -146,11 +160,11 @@ class MontyHallGame extends Component {
         <div className={s.tallies}>
           <WinLoseList
             label="Stayed"
-            data={this.state.results_stayed}
+            data={this.state.results.stayed}
           />
           <WinLoseList
             label="Switched"
-            data={this.state.results_switched}
+            data={this.state.results.switched}
           />
         </div>
       </div>
