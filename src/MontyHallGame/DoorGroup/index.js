@@ -3,13 +3,7 @@ import Door from './../Door';
 import s from './DoorGroup.css';
 
 class DoorGroup extends Component {
-  constructor(props) {
-    super(props)
-  }
-
-
   renderDoor(i) {
-
     const winning = (this.props.winning_door === i),
           selected = (this.props.selected_door === i),
           opened = (this.props.opened_door === i);

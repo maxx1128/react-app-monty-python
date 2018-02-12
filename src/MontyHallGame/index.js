@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
 import s from './MontyHallGame.css';
 
-import Door from './Door';
 import DoorGroup from './DoorGroup';
 import WinLoseList from './WinLoseList';
 import Button from '../Button';
 
 class MontyHallGame extends Component {
   constructor(props) {
-    super(props),
-    
+    super(props);
     this.state = {
       turn: 0,
       selected_door: null,
       opened_door: null,
+      switch_door: null,
       winning_door: Math.floor(Math.random() * 3),
       action: null,
       results_stayed: {
@@ -27,26 +26,61 @@ class MontyHallGame extends Component {
     }
   }
 
-  get_opened_door = (selected) => {
-    let doors = [0,1,2],
-        selected_door = doors.indexOf(selected),
-        available_doors = doors.splice(selected_door, 1);
+  remove_from_array = (array, element) => {
+    const index = array.indexOf(element);
+    
+    if (index !== -1) {
+        array.splice(index, 1);
+    }
+  }
 
-    return doors[Math.floor(Math.random()*doors.length)];
+  get_door_roles = (selected_door) => {
+    let opened_door = [0,1,2],
+        switch_door = [0,1,2];
+    
+    const winning_door = this.state.winning_door;
+
+    this.remove_from_array(opened_door, selected_door);
+    this.remove_from_array(opened_door, winning_door);
+    opened_door = opened_door[0];
+
+    this.remove_from_array(switch_door, selected_door);
+    this.remove_from_array(switch_door, opened_door);
+    switch_door = switch_door[0];
+
+    console.log(`Switch Door: ${switch_door}`);
+
+    return {
+      opened: opened_door,
+      switch: switch_door
+    }
   }
 
   select_door = (i) => {
     if (this.state.turn === 0) {
+      const door_roles = this.get_door_roles(i),
+            opened_door = door_roles.opened,
+            switch_door = door_roles.switch;
+
       this.setState({
         turn: 1,
         selected_door: i,
-        opened_door: this.get_opened_door(i)
+        opened_door: opened_door,
+        switch_door: switch_door
       });
     }
   }
 
-  stay_or_switch = () => {
+  stay_or_switch = (action) => {
     if (this.state.turn === 1) {
+      const will_switch = (action === "switch") ? true : false;
+
+      if (will_switch) {
+        this.setState({
+          selected_door: this.state.switch_door
+        });
+      }
+
       this.setState({turn: 2});
     }
   }
@@ -58,6 +92,28 @@ class MontyHallGame extends Component {
         winning_door: Math.floor(Math.random() * 3)
       });
     }
+  }
+
+  show_game_buttons = () => {
+    if (this.state.turn > 0) {
+      return (
+        <div className={s.buttons}>
+          <Button
+            text="Stay"
+            click_action="stay"
+            click_event={this.stay_or_switch}
+          />
+          <Button
+            secondary
+            text="Switch"
+            click_action="switch"
+            click_event={this.stay_or_switch}
+          />
+        </div>
+      );
+    }
+
+    return <div className={s.buttons}></div>;
   }
 
   render() {
@@ -77,15 +133,7 @@ class MontyHallGame extends Component {
           </li>
         </ul>
 
-        <div className={s.buttons}>
-          <Button
-            text="Primary Button"
-          />
-          <Button
-            secondary
-            text="Secondary Button"
-          />
-        </div>
+        {this.show_game_buttons()}
 
         <DoorGroup
           selected_door={this.state.selected_door}
