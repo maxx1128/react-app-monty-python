@@ -9,6 +9,7 @@ class MontyHallGame extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      explanation: "",
       turn: 0,
       selected_door: null,
       opened_door: null,
@@ -134,22 +135,36 @@ class MontyHallGame extends Component {
     return <div className={s.buttons}></div>;
   }
 
-  render() {
+  intro_text = () => {
+    let text;
+    const turn = this.state.turn;
 
+    if (turn === 0) {
+      text = [
+        "First turn!",
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem enim explicabo, provident id quide."
+      ];
+    } else if (turn === 1) {
+      text = [
+        "Second turn!",
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est autem dolores rem nam inventore labor."
+      ];
+    } else if (turn === 2) {
+      text = [
+        "Third turn!",
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam tempore dolore impedit quo."
+      ];
+    }
+
+    return text.map((p, i) => <p key={i}>{p}</p>);
+  }
+
+  render() {
     return (
       <div>
-        <p className={s.text}>
-          Play the Monty Hall Dilemma! Intro text and next steps go here.
-        </p>
-
-        <ul>
-          <li>
-            Turn: {this.state.turn}
-          </li>
-          <li>
-            Winning door: {this.state.winning_door}
-          </li>
-        </ul>
+        <div className={s.text}>
+          {this.intro_text()}
+        </div>
 
         {this.show_game_buttons()}
 
