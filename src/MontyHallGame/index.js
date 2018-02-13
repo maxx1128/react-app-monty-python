@@ -162,12 +162,6 @@ class MontyHallGame extends Component {
   render() {
     return (
       <div>
-        <div className={s.text}>
-          {this.intro_text()}
-        </div>
-
-        {this.show_game_buttons()}
-
         <DoorGroup
           selected_door={this.state.selected_door}
           winning_door={this.state.winning_door}
@@ -175,6 +169,12 @@ class MontyHallGame extends Component {
           turn={this.state.turn}
           click_event={this.select_door}
         />
+
+        <div className={s.text}>
+          {this.intro_text()}
+        </div>
+
+        {this.show_game_buttons()}
 
         <div className={s.tallies}>
           <WinLoseList

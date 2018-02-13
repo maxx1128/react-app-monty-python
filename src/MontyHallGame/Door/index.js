@@ -9,26 +9,25 @@ class Door extends Component {
       }
   }
 
+  get_classes = () => {
+    let styles = [s.door];
+    const winner   = this.props.winning,
+          selected = this.props.selected,
+          opened   = this.props.opened;
+
+    if (opened) {
+      winner ? styles.push(s.treasure) : styles.push(s.goat)
+    }
+
+    if (selected) { styles.push(s.selected); }
+
+    return styles.join(' ');
+  }
+
   render() {
-
-    const winner   = this.props.winning ? 'Winner' : 'Loser',
-          selected = this.props.selected ? 'Selected' : '',
-          opened   = this.props.opened ? 'Opened' : '';
-
     return (
       <div className={s.wrapper} onClick={() => this.props.onClick(this.props.number)}>
-        <div className={s.door}>
-          <p>
-            {winner}
-          </p>
-
-          <p>
-            {selected}
-          </p>
-
-          <p>
-            {opened}
-          </p>
+        <div className={this.get_classes()}>
         </div>
       </div>
     )
