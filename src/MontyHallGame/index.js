@@ -73,11 +73,6 @@ class MontyHallGame extends Component {
     }
   }
 
-  update_results = (result) => {
-    result++;
-    this.setState({results: {stayed: {wins: result}}});
-  }
-
   stay_or_switch = (action) => {
     if (this.state.turn === 1) {
       let   results    = this.state.results;
@@ -103,25 +98,36 @@ class MontyHallGame extends Component {
     if (this.state.turn === 2) {
       this.setState({
         turn: 0,
-        winning_door: Math.floor(Math.random() * 3)
+        selected_door: null,
+        opened_door: null,
+        switch_door: null,
+        winning_door: Math.floor(Math.random() * 3),
+        action: null,
       });
     }
   }
 
   show_game_buttons = () => {
-    if (this.state.turn > 0) {
+    if (this.state.turn === 1) {
       return (
         <div className={s.buttons}>
           <Button
             text="Stay"
-            click_action="stay"
-            click_event={this.stay_or_switch}
+            click_event={() => this.stay_or_switch("stay")}
           />
           <Button
             secondary
             text="Switch"
-            click_action="switch"
-            click_event={this.stay_or_switch}
+            click_event={() => this.stay_or_switch("switch")}
+          />
+        </div>
+      );
+    } else if (this.state.turn === 2) {
+      return (
+        <div className={s.buttons}>
+          <Button
+            text="Play Again"
+            click_event={this.restart_game}
           />
         </div>
       );

@@ -20,7 +20,7 @@ class Footer extends Component {
     }
 
     return (
-      <a className={styleClass} href={link} onClick={() => this.props.click_event(this.props.click_action)}>
+      <a className={styleClass} href={link} onClick={() => this.props.click_event()}>
         {text}
       </a>
     )
