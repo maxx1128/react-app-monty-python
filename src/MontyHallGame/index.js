@@ -50,8 +50,6 @@ class MontyHallGame extends Component {
     this.remove_from_array(switch_door, opened_door);
     switch_door = switch_door[0];
 
-    console.log(`Switch Door: ${switch_door}`);
-
     return {
       opened: opened_door,
       switch: switch_door

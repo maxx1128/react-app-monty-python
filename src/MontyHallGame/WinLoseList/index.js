@@ -11,11 +11,11 @@ const WinLoseList = ({ label, data }) => {
 
       <ul>
         <li>
-          {data.wins} Wins
+          {data.wins} {data.wins === 1 ? 'Win' : 'Wins'}
         </li>
 
         <li>
-          {data.losses} Losses
+          {data.losses} {data.losses === 1 ? 'Loss' : 'Losses'}
         </li>
       </ul>
     </div>
