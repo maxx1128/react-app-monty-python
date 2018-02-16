@@ -1,8 +1,6 @@
 .container {
   composes: padding-base from "../styles/layout.css";
 
-  composes: text-center from "../styles/type.css";
-
   composes: bg-contrast-mono-darkest from "../styles/colors.css";
 }
 
