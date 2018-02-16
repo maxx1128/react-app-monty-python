@@ -11,13 +11,10 @@ class Door extends Component {
 
   get_classes = () => {
     let styles = [s.door];
-    const winner   = this.props.winning,
-          selected = this.props.selected,
-          opened   = this.props.opened,
-          cursor   = this.props.cursor;
+    const { winning, selected, opened, cursor } = this.props;
 
     if (opened) {
-      winner ? styles.push(s.treasure) : styles.push(s.goat)
+      winning ? styles.push(s.treasure) : styles.push(s.goat)
     }
 
     if (selected) { styles.push(s.selected); }
