@@ -6,6 +6,7 @@ class DoorGroup extends Component {
   renderDoor(i) {
     const winning = (this.props.winning_door === i),
           selected = (this.props.selected_door === i),
+          cursor = (this.props.turn === 0),
           opened = (this.props.turn === 2) ? true : (this.props.opened_door === i);
 
     return (
@@ -14,6 +15,7 @@ class DoorGroup extends Component {
         winning={winning}
         selected={selected}
         opened={opened}
+        cursor={cursor}
         onClick={this.props.click_event}
       />
     )

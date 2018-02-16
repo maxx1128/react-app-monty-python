@@ -13,13 +13,15 @@ class Door extends Component {
     let styles = [s.door];
     const winner   = this.props.winning,
           selected = this.props.selected,
-          opened   = this.props.opened;
+          opened   = this.props.opened,
+          cursor   = this.props.cursor;
 
     if (opened) {
       winner ? styles.push(s.treasure) : styles.push(s.goat)
     }
 
     if (selected) { styles.push(s.selected); }
+    if (cursor) { styles.push(s.cursor); }
 
     return styles.join(' ');
   }

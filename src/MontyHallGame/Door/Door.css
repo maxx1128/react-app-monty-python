@@ -4,14 +4,27 @@
 }
 
 .door {
+  position: relative;
   width: 100%;
   height: 30vh;
   composes: padding-half from "../../styles/layout.css";
-  composes: color-mono-lightest from "../../styles/colors.css";
+  composes: color-mono-lightest bg-mono-darkest from "../../styles/colors.css";
 
-  background-image: url("https://i.ytimg.com/vi/cQNACPPGUA8/maxresdefault.jpg");
   background-size: cover;
   background-position: center;
+}
+
+.door::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0%;
+  left: 0;
+
+  background-image: url("https://i.ytimg.com/vi/cQNACPPGUA8/maxresdefault.jpg");
+
+  transition: 1s bottom;
 }
 
 .goat {
@@ -22,6 +35,41 @@
   background-image: url("https://i.ytimg.com/vi/ixwNbX9ar44/maxresdefault.jpg");
 }
 
+.goat::before,
+.treasure::before {
+  bottom: 100%;
+
+  transition: 1s bottom;
+}
+
 .selected {
+  position: relative;
+}
+
+.selected::after {
+  content: "Selected";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 0.5rem;
+
+  color: white;
+  font-size: 1.3rem;
+  text-align: center;
+
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.cursor {
+  box-shadow: 0;
+
+  cursor: pointer;
+  transition: 0.5s box-shadow;
+}
+
+.cursor:hover {
   box-shadow: 0 .56rem 1.69rem rgba(17,17,17,0.78),0 0 1.69rem rgba(17,17,17,0.82);
+
+  transition: 0.5s box-shadow;
 }
