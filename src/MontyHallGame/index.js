@@ -137,22 +137,30 @@ class MontyHallGame extends Component {
 
   intro_text = () => {
     let text;
-    const turn = this.state.turn;
+    const { turn, selected_door, winning_door } = this.state,
+          ending_text = (selected_door === winning_door) ? "Congrats, you've won!" : "Sorry, you've lost!";
+
 
     if (turn === 0) {
       text = [
-        "First turn!",
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem enim explicabo, provident id quide."
+        "Welcome to the Monty Hall Dilemma!",
+        "This is a simple logic puzzle. Above this text are three curtains. Behind one curtain is treasure, but behind the other two are goats. The goal, for most people anyway, is to get the treasure!",
+        "However, you can't just pick one curtain and see what's behind it right away. Where's the fun in that?",
+        "First, select one of the three curtains above."
       ];
     } else if (turn === 1) {
       text = [
-        "Second turn!",
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est autem dolores rem nam inventore labor."
+        "You've selected one curtain, but you can't see what's behind it yet.",
+        "Instead, you can see behind one of the curtains you didn't select. There's a goat behind it! Now there's only two curtains left, one with the treasure and the other with a goat.",
+        "You have a choice: you can either stay with the curtain you first selected, or switch to the other curtain. Whichever one you choose, you'll get whatever is behind it. Most importantly, one choice is twice as likely to get you the treasure.",
+        "What will you do?"
       ];
     } else if (turn === 2) {
       text = [
-        "Third turn!",
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam tempore dolore impedit quo."
+        ending_text,
+        "The trick to this puzzle is to always switch your door, since it double your chances!",
+        "Staying means you need to select the right door at the start, giving you a 33% chance. But switching means you have to select a wrong door at the start, giving you a 66% chance. That's why switching is always the better option!",
+        "You can play more rounds and track your win and lose streaks below the curtains to see the statistics behind this in action."
       ];
     }
 
@@ -162,6 +170,12 @@ class MontyHallGame extends Component {
   render() {
     return (
       <div>
+        <div className={s.text}>
+          {this.intro_text()}
+        </div>
+
+        {this.show_game_buttons()}
+
         <DoorGroup
           selected_door={this.state.selected_door}
           winning_door={this.state.winning_door}
@@ -169,12 +183,6 @@ class MontyHallGame extends Component {
           turn={this.state.turn}
           click_event={this.select_door}
         />
-
-        <div className={s.text}>
-          {this.intro_text()}
-        </div>
-
-        {this.show_game_buttons()}
 
         <div className={s.tallies}>
           <WinLoseList
