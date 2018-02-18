@@ -32,9 +32,7 @@ class MontyHallGame extends Component {
   remove_from_array = (array, element) => {
     const index = array.indexOf(element);
     
-    if (index !== -1) {
-        array.splice(index, 1);
-    }
+    if (index !== -1) { array.splice(index, 1); }
   }
 
   get_door_roles = (selected_door) => {
@@ -59,9 +57,8 @@ class MontyHallGame extends Component {
 
   select_door = (i) => {
     if (this.state.turn === 0) {
-      const door_roles  = this.get_door_roles(i),
-            opened_door = door_roles.opened,
-            switch_door = door_roles.switch;
+      const opened_door = this.get_door_roles(i).opened,
+            switch_door = this.get_door_roles(i).switch;
 
       this.setState({
         turn: 1,
@@ -132,7 +129,7 @@ class MontyHallGame extends Component {
       );
     }
 
-    return <div className={s.buttons}></div>;
+    return <div></div>;
   }
 
   intro_text = () => {
@@ -144,7 +141,7 @@ class MontyHallGame extends Component {
     if (turn === 0) {
       text = [
         "Welcome to the Monty Hall Dilemma!",
-        "This is a simple logic puzzle. Above this text are three curtains. Behind one curtain is treasure, but behind the other two are goats. The goal, for most people anyway, is to get the treasure!",
+        "This is a simple logic puzzle. Below this text are three curtains. Behind one curtain is treasure, but behind the other two are goats. The goal, for most people anyway, is to get the treasure!",
         "However, you can't just pick one curtain and see what's behind it right away. Where's the fun in that?",
         "First, select one of the three curtains above."
       ];

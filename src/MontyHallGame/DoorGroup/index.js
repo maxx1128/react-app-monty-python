@@ -4,10 +4,11 @@ import s from './DoorGroup.css';
 
 class DoorGroup extends Component {
   renderDoor(i) {
-    const winning = (this.props.winning_door === i),
-          selected = (this.props.selected_door === i),
-          cursor = (this.props.turn === 0),
-          opened = (this.props.turn === 2) ? true : (this.props.opened_door === i);
+    const { winning_door, selected_door, turn, opened_door, click_event } = this.props,
+          winning = (winning_door === i),
+          selected = (selected_door === i),
+          cursor = (turn === 0),
+          opened = (turn === 2) ? true : (opened_door === i);
 
     return (
       <Door
@@ -16,7 +17,7 @@ class DoorGroup extends Component {
         selected={selected}
         opened={opened}
         cursor={cursor}
-        onClick={this.props.click_event}
+        onClick={click_event}
       />
     )
   }
